@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+		body {background-color: #fffc4d;text-align: center;}
+		h1   {font-size: 32px;color: red;font-family:fantasy;}
+		p    {font-size: 22px;color: blue;}
+		
+		</style>
+</head>
+
+<body>
+<h1> Your Chance to Win Starts Here. </h1>
+<script language="javascript">
+//By Frank Hua, for COMP20//
+var winningfive=[];
+var win_length=5;
+for(i=0;i<win_length;i++) {
+	winningfive.push((Math.floor(Math.random() * 47+1)));
+	winningfive[i]=parseInt(winningfive[i]);
+	winningfive.sort(function(a,b) {return a-b;});
+}
+var luckyball=Math.floor(Math.random() * 17+1);
+
+var numchoose=prompt("Pick your five lucky numbers from 1-48(no repeats, and put a space in between each number)").split(" ");
+var ballchoose=prompt("Pick your lucky ball from 1-18").split(" ");
+//store 5 entires into an array//
+for(i=0;i<win_length;i++) {
+	numchoose[i]=parseInt(numchoose[i]);
+	numchoose.sort(function(a,b) {return a-b;});
+}
+//for loop to compare values//
+var match=0;
+for (var i = 0; i < winningfive.length; i++) {
+	for(var j=0;j<winningfive.length;j++){
+    if(numchoose[i]== winningfive[j])
+		match++;
+	}
+}
+//boolean value for lucky ball match//
+var luckmatch=false;
+if(luckyball==ballchoose)luckmatch=true;
+if(luckmatch)alert("YOU MATCHED THE LUCKY BALL!!!");
+</script>
+
+
+<p><strong>The First Five Winning Numbers Are :</strong></p>
+<script>document.write(winningfive);</script>
+<p><strong>The Lucky Ball Is : </strong></p>
+<script>document.write(luckyball);</script>
+<p><strong>First Five Numbers You Picked:</strong></p>
+<script>document.write(numchoose);</script>
+<p><strong>Lucky Ball You Picked:</strong></p>
+<script>document.write(ballchoose);</script>
+<p><script>if(luckmatch)
+document.write("<h2>CONGRATS YOU MATCHED THE LUCKY BALL!");
+else document.write("You Missed The Lucky Ball :(");
+</script></p>
+		
+<p><strong>Total Numbers That You Matched:</strong></p>
+<script>
+document.write(match);
+</script>
+
+<p><strong>Your Payouts: </strong></p>
+<h1>
+<script>
+switch(match){
+case 0:
+if(luckmatch) document.write("You Won $4!");
+else document.write("You Won $0, Better Luck Next Time!");
+break;
+
+case 1:
+if(luckmatch) document.write("You Won $6!");
+else document.write("You Won $0, Better Luck Next Time!");
+break;
+
+case 2:
+if(luckmatch) document.write("You Won $25!");
+else document.write("You Won $3!");
+break;
+
+case 3:
+if(luckmatch) document.write("You Won $150!");
+else document.write("You Won $20!");
+break;
+
+case 4:
+if(luckmatch) document.write("You Won $5000!");
+else document.write("You Won $200!");
+break;
+
+case 5:
+if(luckmatch) document.write("You Won THE ULTIMATE PRIZE: $7000 a Week For LIFE!");
+else document.write("You Won $25000 a YEAR for LIFE!");
+break;
+}
+</script>
+</h1>
+</body>
+</html>
